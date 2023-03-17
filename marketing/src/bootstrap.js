@@ -18,4 +18,4 @@ if(process.env.NODE_ENV ==='development'){
 
 //
 
-module.export = mount;
+export {mount};
