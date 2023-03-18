@@ -10,6 +10,15 @@ const mount = (el, { onNavigate }) => {
 	}
 
 	ReactDOM.render(<App history={history} />, el);
+
+	return {
+		onParentContainerNavigate: ({ pathname: parentPathname }) => {
+			const { pathname } = history.location;
+			if (pathname !== parentPathname) {
+				history.push(parentPathname);
+			}
+		}
+	};
 };
 
 // delelopment or production

@@ -5,8 +5,9 @@ import { useHistory } from 'react-router-dom';
 const MarketingApp = () => {
 	const ref = useRef(null);
 	const history = useHistory();
+
 	useEffect(() => {
-		mount(ref.current, {
+		const {onParentContainerNavigate} = mount(ref.current, {
 			onNavigate: ({ pathname: nextPathname }) => {
 				const { pathname } = history.location;
 				if (pathname !== nextPathname) {
@@ -14,6 +15,7 @@ const MarketingApp = () => {
 				}
 			}
 		});
+    history.listen(onParentContainerNavigate);
 	}, []);
 	return <div ref={ref}></div>;
 };
