@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './app';
 import { createMemoryHistory } from 'history';
 
-const mount = (el,{onNavigate}) => {
+const mount = (el, { onNavigate }) => {
 	const history = createMemoryHistory();
-  history.listen(onNavigate);
+	if (onNavigate) {
+		history.listen(onNavigate);
+	}
+
 	ReactDOM.render(<App history={history} />, el);
 };
 
@@ -13,7 +16,7 @@ const mount = (el,{onNavigate}) => {
 if (process.env.NODE_ENV === 'development') {
 	const findEl = document.querySelector('#marketing-dev-root');
 	if (findEl) {
-		mount(findEl);
+		mount(findEl, {});
 	}
 }
 
