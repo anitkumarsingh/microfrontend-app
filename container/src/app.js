@@ -1,7 +1,8 @@
 import React from 'react';
 import MarketingApp from './conponents/MarketingApp';
+import AuthApp from './conponents/AuthApp';
 import Header from './conponents/Header';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter,Route,Switch } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core';
 
 const generateRandomClassname = createGenerateClassName({
@@ -13,6 +14,10 @@ const App = () => {
 		<StylesProvider generateClassName={generateRandomClassname}>
 			<BrowserRouter>
 				<Header />
+				<Switch>
+					<Route path="/auth" component={AuthApp}/>
+					<Route path="/" component={MarketingApp}/>
+				</Switch>
 				<MarketingApp />
 			</BrowserRouter>
 		</StylesProvider>
