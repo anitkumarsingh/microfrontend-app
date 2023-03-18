@@ -1,23 +1,23 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import { StylesProvider,createGenerateClassName } from '@material-ui/core';
+import { Route, Router, Switch } from 'react-router-dom';
+import { StylesProvider, createGenerateClassName } from '@material-ui/core';
 import LandingPage from './components/Landing';
 import Pricing from './components/Pricing';
 
-const generateRandomClassname= createGenerateClassName({
-	productionPrefix:'ma'
+const generateRandomClassname = createGenerateClassName({
+	productionPrefix: 'ma'
 });
 
-const App = () => {
+const App = ({ history }) => {
 	return (
 		<>
 			<StylesProvider generateClassName={generateRandomClassname}>
-				<BrowserRouter>
+				<Router history={history}>
 					<Switch>
 						<Route exact path='/' component={LandingPage} />
 						<Route path='/pricing' component={Pricing} />
 					</Switch>
-				</BrowserRouter>
+				</Router>
 			</StylesProvider>
 		</>
 	);
