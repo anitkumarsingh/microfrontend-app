@@ -13,6 +13,7 @@ const generateRandomClassname = createGenerateClassName({
 
 const App = () => {
 	const [isSignIn, setIsSignIn] = useState(false);
+	console.log('asdasas');
 	return (
 		<StylesProvider generateClassName={generateRandomClassname}>
 			<BrowserRouter>
