@@ -5,7 +5,7 @@ import LandingPage from './components/Landing';
 import Pricing from './components/Pricing';
 
 const generateRandomClassname = createGenerateClassName({
-	productionPrefix: 'mar'
+	productionPrefix: 'ma'
 });
 
 const App = ({ history }) => {
