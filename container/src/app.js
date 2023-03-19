@@ -6,6 +6,7 @@ import ProgressBar from './conponents/Progress';
 
 const LazyMarketingApp = lazy(() => import('./conponents/MarketingApp'));
 const LazyAuthApp = lazy(() => import('./conponents/AuthApp'));
+const LazyDashboardApp = lazy(() => import('./conponents/Dashboard'));
 
 const generateRandomClassname = createGenerateClassName({
 	productionPrefix: 'co'
@@ -22,6 +23,7 @@ const App = () => {
 						<Route path='/auth'>
 							<LazyAuthApp onSignIn={() => setIsSignIn(true)} />
 						</Route>
+						<Route path='/dashboard' component={LazyDashboardApp} />
 						<Route path='/' component={LazyMarketingApp} />
 					</Suspense>
 				</Switch>
