@@ -2,6 +2,7 @@ import Dashboard from './components/Dashboard.vue';
 import {createApp} from 'vue';
 
 const mount = (el) => {
+	console.log('asdas');
 	const app = createApp(Dashboard);
 	app.mount(el);
 };
