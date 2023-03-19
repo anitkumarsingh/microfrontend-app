@@ -9,6 +9,7 @@ const generateRandomClassname = createGenerateClassName({
 });
 
 const App = ({ history, onSignIn }) => {
+	console.log('asdas');
 	return (
 		<>
 			<StylesProvider generateClassName={generateRandomClassname}>
