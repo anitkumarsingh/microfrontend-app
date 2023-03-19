@@ -1,26 +1,28 @@
-import React,{lazy,Suspense} from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import Header from './conponents/Header';
-import { BrowserRouter,Route,Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core';
 import ProgressBar from './conponents/Progress';
 
-
-const lazyMarketingApp = lazy(()=>import('./conponents/MarketingApp'));
-const lazyAuthApp = lazy(()=>import('./conponents/AuthApp'));
+const LazyMarketingApp = lazy(() => import('./conponents/MarketingApp'));
+const LazyAuthApp = lazy(() => import('./conponents/AuthApp'));
 
 const generateRandomClassname = createGenerateClassName({
 	productionPrefix: 'co'
 });
 
 const App = () => {
+	const [isSignIn, setIsSignIn] = useState(false);
 	return (
 		<StylesProvider generateClassName={generateRandomClassname}>
 			<BrowserRouter>
-				<Header />
+				<Header isSignIn={isSignIn} onSignOut={() => setIsSignIn(false)} />
 				<Switch>
-					<Suspense fallback={<ProgressBar/>}>
-					<Route path="/auth" component={lazyAuthApp}/>
-					<Route path="/" component={lazyMarketingApp}/>
+					<Suspense fallback={<ProgressBar />}>
+						<Route path='/auth'>
+							<LazyAuthApp onSignIn={() => setIsSignIn(true)} />
+						</Route>
+						<Route path='/' component={LazyMarketingApp} />
 					</Suspense>
 				</Switch>
 			</BrowserRouter>
