@@ -8,7 +8,7 @@ const LazyMarketingApp = lazy(() => import('./conponents/MarketingApp'));
 const LazyAuthApp = lazy(() => import('./conponents/AuthApp'));
 
 const generateRandomClassname = createGenerateClassName({
-	productionPrefix: 'con'
+	productionPrefix: 'co'
 });
 
 const App = () => {
